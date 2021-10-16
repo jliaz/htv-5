@@ -13,10 +13,10 @@ function EndNode({ data }) {
     <>
       <Grid container spacing={0.5} direction="column" alignItems="flex-start">
         <Grid item>
-          <IconButton onClick={() => {console.log("hel")}}>
+          <IconButton onClick={() => {console.log("hel")}} style={{color: 'white'}}>
             <ClearSharpIcon />
           </IconButton>
-          <Typography variant="p"> {data.label} </Typography>
+          <Typography variant="p" color='white'> {data.label} </Typography>
         </Grid>
         <Grid container direction="row" justifyContent="center" alignItems="center">
             <Box sx={{
@@ -35,7 +35,7 @@ function EndNode({ data }) {
             </Box>
             <Box sx={{
                 backgroundColor: '#21415E',
-                border: '1px solid white',
+                border: '0.5px solid #627F9A',
                 padding: 5,
                 minHeight: '100px',
                 color: 'white'
