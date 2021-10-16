@@ -10,8 +10,7 @@ import StartNode from '../StartNode/StartNode';
 import MiddleNode from '../MiddleNode/MiddleNode';
 import EndNode from '../EndNode/EndNode';
 
-import './AddNodeSidebar.css';
-import AddNodeSidebar from './AddNodeSidebar';
+import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
 
 const initialElements = [
@@ -27,7 +26,7 @@ const initialElements = [
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
-const DnDFlow = () => {
+const Editor = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
@@ -116,4 +115,4 @@ const DnDFlow = () => {
   );
 };
 
-export default DnDFlow;
+export default Editor;

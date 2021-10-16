@@ -1,9 +1,9 @@
 import React from 'react';
 import './AddNodeSidebar.css';
-// import Switch from '@mui/material/Switch';
+import Switch from '@mui/material/Switch';
 import Collapse from '@mui/material/Collapse';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { Switch } from 'ui-neumorphism'
+// import { Switch } from 'ui-neumorphism'
 import 'ui-neumorphism/dist/index.css'
 
 const onDragStart = (event, nodeType) => {
@@ -22,7 +22,7 @@ const AddNodeSidebar = () => {
   return (
     <>
       <FormControlLabel style={{padding: "0 10px 0 10px", marginRight:"0px"}}
-        control={<Switch color='var(--primary)' checked={checked} onChange={handleChange} />}
+        control={<Switch checked={checked} onChange={handleChange} />}
         label="Show"
       />
       <Collapse orientation="horizontal" in={checked}>
