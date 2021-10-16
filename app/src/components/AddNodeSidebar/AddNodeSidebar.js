@@ -4,6 +4,7 @@ import Switch from '@mui/material/Switch';
 import Collapse from '@mui/material/Collapse';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Box } from '@mui/system';
+import Grid from '@mui/material/Grid';
 
 const onDragStart = (event, nodeType) => {
   event.dataTransfer.setData('application/reactflow', nodeType);
@@ -39,17 +40,53 @@ const AddNodeSidebar = () => {
             <h1>Node Pocket</h1>
             <div className="description">Drag and drop nodes onto your canvas</div>
             <h4 style={{textAlign:"left"}}>Input Nodes</h4>
-            <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'fileUploadNode')} draggable>
-              <div className="pocket-node-text">File Upload</div>
-            </div>
+            <Grid container
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={2}>
+              <Grid item>
+                <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'fileUploadNode')} draggable>
+                  <div className="pocket-node-text">File Upload</div>
+                </div>
+              </Grid>
+              <Grid item>
+                <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'voiceUploadNode')} draggable>
+                  <div className="pocket-node-text">Voice Upload</div>
+                </div>
+              </Grid>
+            </Grid>
+           
             <h4 style={{textAlign:"left"}}>Function Nodes</h4>
-            <div className="flowboat-node middle-node" onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
-              <div className="pocket-node-text">Linear Regression</div>
-            </div>
+            <Grid container
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={2}>
+                  <Grid item>
+                    <div className="flowboat-node middle-node" onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
+                      <div className="pocket-node-text">Linear Regression</div>
+                    </div>
+                </Grid>
+                <Grid item>
+                    <div className="flowboat-node middle-node" onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
+                      <div className="pocket-node-text">Multilinear Regression</div>
+                    </div>
+                </Grid>
+            </Grid>
+            
             <h4 style={{textAlign:"left"}}>Output Nodes</h4>
-            <div className="flowboat-node end-node" onDragStart={(event) => onDragStart(event, 'endNode')} draggable>
-              <div className="pocket-node-text">Scatter Plot</div>
-            </div>
+            <Grid container
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={2}>
+              <Grid item>
+                <div className="flowboat-node end-node" onDragStart={(event) => onDragStart(event, 'endNode')} draggable>
+                  <div className="pocket-node-text">Scatter Plot</div>
+                </div>
+              </Grid>
+            </Grid>
           </Box>
         </Collapse>
     </>
