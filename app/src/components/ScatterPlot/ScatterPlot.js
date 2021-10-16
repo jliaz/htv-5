@@ -53,7 +53,7 @@ export default class ScatterPlot extends React.Component {
           .attr('cx', (d) => this.xScale(d.x))
           .attr('cy', (d) => this.yScale(d.y))
           .style('stroke', "black")
-          .style('stroke-width', (d) => d.selected == true ? "3px" : "0px")
+          .style('stroke-width', (d) => d.selected === true ? "3px" : "0px")
 
 
       // Use the .exit() and .remove() methods to remove elements that are no longer in the data

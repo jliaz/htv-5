@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddNodeSidebar.css'
 
 const onDragStart = (event, nodeType) => {
   event.dataTransfer.setData('application/reactflow', nodeType);
@@ -8,15 +9,19 @@ const onDragStart = (event, nodeType) => {
 const AddNodeSidebar = () => {
   return (
     <aside>
+      <h1>Node Pocket</h1>
       <div className="description">You can drag these nodes to the pane on the left.</div>
-      <div className="react-flow__node-input" onDragStart={(event) => onDragStart(event, 'input')} draggable>
-        Input Node
+      <h4 style={{textAlign:"center"}}>---Input Nodes---</h4>
+      <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'startNode')} draggable>
+        <div className="pocket-node-text">File Upload</div>
       </div>
-      <div className="react-flow__node-default" onDragStart={(event) => onDragStart(event, 'default')} draggable>
-        Default Node
+      <h4 style={{textAlign:"center"}}>---Intermediate Nodes---</h4>
+      <div className="flowboat-node middle-node" onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
+        <div className="pocket-node-text">Linear Regression</div>
       </div>
-      <div className="react-flow__node-output" onDragStart={(event) => onDragStart(event, 'output')} draggable>
-        Output Node
+      <h4 style={{textAlign:"center"}}>---Result Nodes---</h4>
+      <div className="flowboat-node end-node" onDragStart={(event) => onDragStart(event, 'endNode')} draggable>
+        <div className="pocket-node-text">Scatter Plot</div>
       </div>
     </aside>
   );

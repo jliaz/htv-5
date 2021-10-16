@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import { useState } from 'react';
 import { Handle } from 'react-flow-renderer';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -25,7 +26,7 @@ function EndNode({ data }) {
             }}>
               <Handle
                 type="target"
-                position="right"
+                position="left"
                 id="a"
                 style={{ width: '20px', top: '60%', height: '70px', background: 'none', border:'none' }}
                 isConnectable={true}
@@ -35,7 +36,8 @@ function EndNode({ data }) {
                 backgroundColor: '#21415E',
                 border: '1px solid white',
                 padding: 1,
-                minHeight: '100px'
+                minHeight: '100px',
+                color: 'white'
             }}>
                 { data.body }
             </Box>

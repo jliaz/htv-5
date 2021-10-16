@@ -1,37 +1,22 @@
-.dndflow {
-  flex-direction: column;
-  display: flex;
-  height: 100vh;
+.start-node {
+  background-color: green;
+  border-radius: 0px 15px 15px 0px;
 }
 
-.dndflow aside {
-  border-right: 1px solid #eee;
-  padding: 15px 10px;
-  font-size: 12px;
-  background: #fcfcfc;
+.middle-node {
+  background-color: orange;
+  border-radius: 15px
 }
 
-.dndflow aside > * {
-  margin-bottom: 10px;
-  cursor: grab;
+.end-node {
+  background-color: red;
+  border-radius: 15px 0 0 15px
 }
 
-.dndflow aside .description {
-  margin-bottom: 10px;
-}
-
-.dndflow .reactflow-wrapper {
-  flex-grow: 1;
-  height: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .dndflow {
-    flex-direction: row;
-  }
-
-  .dndflow aside {
-    width: 20%;
-    max-width: 180px;
-  }
+.pocket-node-text {
+  font-size: 1rem;
+  /* justify-content: center; */
+  line-height: 100px;
+  color: black;
+  font-weight: 400;
 }
