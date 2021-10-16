@@ -30,7 +30,7 @@ const AddNodeSidebar = () => {
           <h1>Node Pocket</h1>
           <div className="description">You can drag these nodes to the pane on the left.</div>
           <h4 style={{textAlign:"center"}}>---Input Nodes---</h4>
-          <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'startNode')} draggable>
+          <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'fileUploadNode')} draggable>
             <div className="pocket-node-text">File Upload</div>
           </div>
           <h4 style={{textAlign:"center"}}>---Intermediate Nodes---</h4>

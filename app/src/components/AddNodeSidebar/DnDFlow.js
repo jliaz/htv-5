@@ -13,13 +13,14 @@ import EndNode from '../EndNode/EndNode';
 import './AddNodeSidebar.css';
 import AddNodeSidebar from './AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
+import FileUpload from '../FileUpload/FileUpload';
 
 const initialElements = [
   {
     id: '1',
     type: 'startNode',
     data: { label: 'File',
-            body: <p>Add your file here.</p> },
+            body: <FileUpload/> },
     position: { x: 250, y: 5 },
   },
 ];
@@ -59,13 +60,13 @@ const DnDFlow = () => {
     //   data: { label: `${type} node` },
     // };
     let newNode = null
-    if (type === 'startNode') {
+    if (type === 'fileUploadNode') {
       newNode = {
         id: getId(),
-        type,
+        type: 'startNode',
         position,
         data: { label: 'File',
-                body: <p>Add your file here.</p> },
+                body: <FileUpload/> },
       };
     } else if (type === 'middleNode') {
       newNode = {
