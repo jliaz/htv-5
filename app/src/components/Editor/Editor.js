@@ -13,6 +13,7 @@ import EndNode from '../EndNode/EndNode';
 import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
 import FileUpload from '../FileUpload/FileUpload';
+import "./Editor.css";
 
 const initialElements = [
   {
@@ -108,7 +109,7 @@ const Editor = () => {
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
           >
-            <Controls />
+            <Controls/>
           </ReactFlow>
         </div>
       </ReactFlowProvider>

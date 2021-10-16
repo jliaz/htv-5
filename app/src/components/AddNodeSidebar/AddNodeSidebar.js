@@ -3,7 +3,6 @@ import './AddNodeSidebar.css';
 import Switch from '@mui/material/Switch';
 import Collapse from '@mui/material/Collapse';
 import FormControlLabel from '@mui/material/FormControlLabel';
-// import { Switch } from 'ui-neumorphism'
 
 const onDragStart = (event, nodeType) => {
   event.dataTransfer.setData('application/reactflow', nodeType);
