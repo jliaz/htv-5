@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import dropIcon from './dropIcon.svg';
 import addNode from './addNode.svg';
+import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 
 function NavBar(props) {
   return (
@@ -16,9 +17,7 @@ function NavBar(props) {
             <IconButton sx={{marginBottom:'3px'}}>
               <img src={dropIcon}/>
             </IconButton>
-            <IconButton>
-              <img src={addNode}/>
-            </IconButton>
+            <AddNodeSidebar/>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign:'center'}}>
               {props.title}
             </Typography>

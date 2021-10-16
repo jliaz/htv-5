@@ -98,7 +98,6 @@ const Editor = () => {
   return (
     <div className="dndflow">
       <ReactFlowProvider>
-        <AddNodeSidebar />
         <div className="reactflow-wrapper" ref={reactFlowWrapper}>
           <ReactFlow
             elements={elements}
