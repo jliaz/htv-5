@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import DnDFlow from './components/AddNodeSidebar/DnDFlow';
+import Editor from './components/Editor/Editor';
 // import PlotGraph from './components/ScatterPlot/PlotGraph';
 import "@fontsource/work-sans";
 
@@ -8,7 +8,7 @@ import "@fontsource/work-sans";
 function App() {
   return (
     <div className="App">
-      <DnDFlow />
+      <Editor />
       {/* <PlotGraph /> */}
     </div>
   );
