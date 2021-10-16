@@ -6,7 +6,7 @@ import "@fontsource/work-sans";
 import { IconButton, Typography } from '@mui/material';
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
 
-function StartNode({ data }) {
+function MiddleNode({ data }) {
   return (
     <>
       <Grid container spacing={0.5} direction="column" alignItems="flex-start">
@@ -17,6 +17,19 @@ function StartNode({ data }) {
           <Typography variant="p"> {data.label} </Typography>
         </Grid>
         <Grid container direction="row" justifyContent="center" alignItems="center">
+            <Box sx={{
+                height: 50,
+                width: 15,
+                backgroundColor: 'orange',
+                borderRadius: '15px 0px 0px 15px'
+            }}>
+            <Handle
+              type="target"
+              position="left"
+              style={{ width: '20px', top: '60%', height: '70px', background: 'none', border: 'none' }}
+              isConnectable={true}
+            />
+          </Box>
           <Box sx={{
               backgroundColor: '#21415E',
               border: '1px solid white',
@@ -26,16 +39,15 @@ function StartNode({ data }) {
             { data.body }
           </Box>
           <Box sx={{
-            height: 100,
+            height: 50,
             width: 15,
-            backgroundColor: 'green',
+            backgroundColor: 'orange',
             borderRadius: '0px 15px 15px 0px'
           }}>
             <Handle
               type="source"
               position="right"
-              id="a"
-              style={{ width: '20px', top: '60%', height: '70px', background: 'none', border:'none' }}
+              style={{ width: '20px', top: '60%', height: '70px', background: 'none', border: 'none'}}
               isConnectable={true}
             />
           </Box>
@@ -46,5 +58,5 @@ function StartNode({ data }) {
   );
 }
   
-  export default StartNode;
+export default MiddleNode;
   
