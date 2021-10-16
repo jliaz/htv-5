@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import "@fontsource/work-sans";
 import { IconButton, Typography } from '@mui/material';
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
+import { Colors } from '../../Colors';
 
 function EndNode({ data }) {
   return (
@@ -21,7 +22,7 @@ function EndNode({ data }) {
             <Box sx={{
                 height: 100,
                 width: 15,
-                backgroundColor: 'red',
+                backgroundColor: Colors.red,
                 borderRadius: '15px 0px 0px 15px'
             }}>
               <Handle
