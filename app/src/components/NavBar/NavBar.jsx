@@ -10,10 +10,10 @@ import addNode from './addNode.svg';
 
 function NavBar(props) {
   return (
-      <Box sx={{ flexGrow: 1, display: 'flex', borderBottom: '5px solid #627F9A', margin:'0px', paddingBottom:"0px"}}>
+      <Box sx={{ flexGrow: 1, display: 'flex', borderBottom: '2px solid #627F9A', margin:'0px', height:'2 0px', width:'100%', alignItems:'center', position:'absolute', zIndex:'9999'}}>
         <AppBar position="static" elevation={0} sx={{fontFamily: 'Work-sans', backgroundColor:'#194769'}}>
-          <Toolbar>
-            <IconButton sx={{marginBottom: '5px'}}>
+          <Toolbar  >
+            <IconButton sx={{marginBottom:'3px'}}>
               <img src={dropIcon}/>
             </IconButton>
             <IconButton>
