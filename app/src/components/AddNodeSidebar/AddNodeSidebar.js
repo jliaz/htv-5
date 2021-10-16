@@ -43,9 +43,7 @@ const AddNodeSidebar = () => {
           </div>
         </aside>
       </Collapse>
-      
     </>
-    
   );
 };
 

@@ -28,6 +28,7 @@
   padding: 15px 10px;
   font-size: 12px;
   background: #fcfcfc;
+  height: 100vh;
 }
 
 .dndflow aside > * {
