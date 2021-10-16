@@ -13,7 +13,7 @@ function StartNode({ data }) {
     <>
       <Grid container spacing={0.5} direction="column" alignItems="flex-start">
         <Grid item>
-          <IconButton onClick={() => {console.log("hel")}} style={{color: 'white'}}>
+          <IconButton onClick={() => {console.log("hel")}} style={{color: 'white', marginLeft: '-15px'}}>
             <ClearSharpIcon />
           </IconButton>
           <Typography variant="p" color='white'> {data.label} </Typography>

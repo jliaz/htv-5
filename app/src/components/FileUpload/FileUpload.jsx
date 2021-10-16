@@ -67,8 +67,15 @@ function FileUpload() {
               Uploaded successful.
             </Box>
             <Button onClick={()=>{}}>View File</Button>
-            <div style={{ height: 300, width: '100%'}}>
-              <DataGrid rows={gridRows} columns={gridColumns} />
+            <div style={{ 
+                height: 300, 
+                width: '100%', 
+                backgroundColor: '#6FEF8D', 
+                borderLeft: '6px solid #6FEF8D', 
+                borderRadius:"3px",
+                
+                }}>
+              <DataGrid rows={gridRows} columns={gridColumns} sx={{color:'white'}}/>
             </div>
           </>
           }
