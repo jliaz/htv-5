@@ -1,0 +1,22 @@
+.start-node {
+  background-color: green;
+  border-radius: 0px 15px 15px 0px;
+}
+
+.middle-node {
+  background-color: orange;
+  border-radius: 15px
+}
+
+.end-node {
+  background-color: red;
+  border-radius: 15px 0 0 15px
+}
+
+.pocket-node-text {
+  font-size: 1rem;
+  /* justify-content: center; */
+  line-height: 100px;
+  color: black;
+  font-weight: 400;
+}
