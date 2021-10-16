@@ -21,7 +21,7 @@ function StartNode({ data }) {
           <Box sx={{
               backgroundColor: '#21415E',
               border: '1px solid white',
-              padding: 1,
+              padding: 5,
               minHeight: '100px',
               color: 'white'
           }}>

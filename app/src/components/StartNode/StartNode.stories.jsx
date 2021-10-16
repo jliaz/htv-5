@@ -1,6 +1,7 @@
 import React from 'react';
 import StartNode from './StartNode';
 import ReactFlow from 'react-flow-renderer';
+import FileUpload from '../FileUpload/FileUpload';
 
 export default {
   component: StartNode,
@@ -17,7 +18,7 @@ const elements = [
         type: 'startNode',
         data: {
             label: 'File',
-            body: <p>Hello this is the body of the node</p>,
+            body: <FileUpload/>,
             deleteCallback: () => {console.log("hello")}
         },
         position: {x: 100, y: 100},
