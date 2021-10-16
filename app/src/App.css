@@ -10,7 +10,7 @@
 .flowboat-node {
   background-color: #21415E;
   border: 1px solid white;
-  border-top: 0;
+  border-left: 0;
   padding: 1;
   min-height: 100px;
   color: white;
@@ -50,7 +50,7 @@
   }
 
   .dndflow aside {
-    width: 30%;
+    width: 100%;
     max-width: 180px;
   }
 }
