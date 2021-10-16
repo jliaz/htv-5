@@ -17,8 +17,9 @@ import PlotGraph from '../ScatterPlot/PlotGraph';
 const initialElements = [
   {
     id: '1',
-    type: 'input',
-    data: { label: 'input node' },
+    type: 'startNode',
+    data: { label: 'File',
+            body: <p>Add your file here.</p> },
     position: { x: 250, y: 5 },
   },
 ];
