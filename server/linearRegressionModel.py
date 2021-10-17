@@ -12,7 +12,7 @@ filepath = "/Users/ansel/Desktop/HTV5/htv-5/server/sample.csv"
 x_coord_name = "percasian"
 y_coord_name = "percwhite"
 
-def getRegressionLine():
+def getRegressionLine(filepath, x_coord_name, y_coord_name):
     info_matrix = []
 
     # with open(filepath, newline='') as csvfile:
@@ -52,7 +52,7 @@ def getRegressionLine():
 
     linear_regression_line = str(int(model.coef_)) + "X" + "+" + str(int(model.intercept_)) 
 
-    # print(linear_regression_line)
+    print(linear_regression_line)
 
     return linear_regression_line
 

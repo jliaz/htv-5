@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, Response
 from flask_marshmallow import Marshmallow
+import linearRegressionModel as lrm
 
 
 app = Flask(__name__)
@@ -69,6 +70,31 @@ def basic_calc():
     return jsonify(total)
 
 
+# endpoints for dataset
+
+dataset_loc = ""
+x_coord_name = ""
+y_coord_name = ""
+
+
+@app.route('/getLinearRegression', methods = ['GET'])
+def posts_dataset():
+
+    dataset_loc = request.json['dataset_loc']
+
+    x_coord_name = request.json['x_coord_name']
+    y_coord_name = request.json['y_coord_name']
+
+
+    return_obj = {}
+
+    return_obj["linearReg"] = lrm.getRegressionLine(dataset_loc, x_coord_name, y_coord_name)
+    return jsonify(return_obj)
+
+@app.route('/getDatasetLoc', methods = ['GET'])
+def get_dataset():
+
+    return jsonify(dataset_loc)
 
 if __name__ == "__main__":
     app.run(debug=True) 
