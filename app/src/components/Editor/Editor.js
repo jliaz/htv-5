@@ -12,14 +12,16 @@ import EndNode from '../EndNode/EndNode';
 
 import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
+import FileUpload from '../FileUpload/FileUpload';
+import "./Editor.css";
 
 const initialElements = [
   {
     id: '1',
     type: 'startNode',
     data: { label: 'File',
-            body: <p>Add your file here.</p> },
-    position: { x: 250, y: 5 },
+            body: <FileUpload/> },
+    position: { x: 700, y: 175 },
   },
 ];
 
@@ -58,13 +60,13 @@ const Editor = () => {
     //   data: { label: `${type} node` },
     // };
     let newNode = null
-    if (type === 'startNode') {
+    if (type === 'fileUploadNode') {
       newNode = {
         id: getId(),
-        type,
+        type: 'startNode',
         position,
         data: { label: 'File',
-                body: <p>Add your file here.</p> },
+                body: <FileUpload/> },
       };
     } else if (type === 'middleNode') {
       newNode = {
@@ -96,7 +98,6 @@ const Editor = () => {
   return (
     <div className="dndflow">
       <ReactFlowProvider>
-        <AddNodeSidebar />
         <div className="reactflow-wrapper" ref={reactFlowWrapper}>
           <ReactFlow
             elements={elements}
@@ -106,8 +107,9 @@ const Editor = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
+            defaultZoom={0.5}
           >
-            <Controls />
+            <Controls/>
           </ReactFlow>
         </div>
       </ReactFlowProvider>
