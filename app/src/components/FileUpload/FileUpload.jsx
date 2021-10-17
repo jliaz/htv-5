@@ -5,8 +5,10 @@ import Button from '@mui/material/Button';
 import Papa from 'papaparse';
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 
+
 const ACCEPTED_FILE_FORMATS = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel";
 const MAX_ROWS = 5;
+
 
 function FileUpload() {
     const [ fileData, setFileData ] = useState();
@@ -70,12 +72,10 @@ function FileUpload() {
             <div style={{ 
                 height: 300, 
                 width: '100%', 
-                backgroundColor: '#6FEF8D', 
-                borderLeft: '6px solid #6FEF8D', 
+                backgroundColor: '#21415E', 
                 borderRadius:"3px",
-                
                 }}>
-              <DataGrid rows={gridRows} columns={gridColumns} sx={{color:'white'}}/>
+              <DataGrid rows={gridRows} columns={gridColumns}/>
             </div>
           </>
           }
