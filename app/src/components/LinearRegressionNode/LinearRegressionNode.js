@@ -1,12 +1,12 @@
 import React from "react";
-import ScatterPlot from "./ScatterPlot";
+// import ScatterPlot from "../ScatterPlot/ScatterPlot";
 // import * as d3 from "d3";
 // import data from '../../data/sample.csv';
 import { Box } from "@mui/system";
 // import { spacing } from "@mui/system";
 // import { Divider } from "@mui/material";
 
-export default class PlotGraph extends React.Component {
+export default class LinearRegressionNode extends React.Component {
   constructor(props) {
       super(props);
 
@@ -15,8 +15,8 @@ export default class PlotGraph extends React.Component {
           data: [],
           options: [],
           allData: [],
-          xVar: "percblack",
-          yVar: "percbelowpoverty"
+          xVar: "percprof",
+          yVar: "percollege"
       };
   }
 
@@ -54,21 +54,21 @@ export default class PlotGraph extends React.Component {
       // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
   render() {
-    function getAllData (x, y, data) {
-      const allData = data.map((d) => {
-        return {
-            x: parseInt(d[x], 10),
-            y: parseInt(d[y], 10),
-            label: d.county + ", " + d.state
-        }; 
-      });
-      return allData;
-    }
+    // function getAllData (x, y, data) {
+    //   const allData = data.map((d) => {
+    //     return {
+    //       x: parseInt(d[x], 10),
+    //       y: parseInt(d[y], 10),
+    //       label: d.county + ", " + d.state
+    //     }; 
+    //   });
+    //   return allData;
+    // }
 
     return (
       <div className="container">
         { this.props.nodeId !== "" ? 
-        <> 
+          <> 
             <div className="control-container">
               <div className="control-wrapper">
                 <label htmlFor="xVar">X Variable:</label>
@@ -79,25 +79,25 @@ export default class PlotGraph extends React.Component {
                 </select>
               </div>
 
-            <div className="control-wrapper">
-              <label htmlFor="yVar">Y Variable:</label>
-              <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
-                {this.state.options.map((d) => {
-                    return <option key={d}>{d}</option>
-                })}
-              </select>
-            </div>                        
-          </div>
-          <p></p>
-          <ScatterPlot
-            xTitle={this.state.xVar}
-            yTitle={this.state.yVar}
-            data={getAllData(this.state.xVar, this.state.yVar, this.state.data)}
-            />
-         </> : <><Box>Please connect a file node</Box></>
+              <div className="control-wrapper">
+                <label htmlFor="yVar">Y Variable:</label>
+                <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
+                  {this.state.options.map((d) => {
+                      return <option key={d}>{d}</option>
+                  })}
+                </select>
+              </div>                        
+            </div>
+            <p></p>
+            {/* <ScatterPlot
+              xTitle={this.state.xVar}
+              yTitle={this.state.yVar}
+              data={getAllData(this.state.xVar, this.state.yVar, this.state.data)}
+              /> */}
+          </> : <><Box>Please connect a file node</Box></>
 
         }
-        </div>
+      </div>
     )
   }
 }

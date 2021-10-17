@@ -13,6 +13,8 @@ import EndNode from '../EndNode/EndNode';
 // import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
 import FileUpload from '../FileUpload/FileUpload';
+import LinearRegressionNode from '../LinearRegressionNode/LinearRegressionNode';
+import LRResultNode from '../LRResultNode/LRResultNode';
 import "./Editor.css";
 
 const initialElements = [
@@ -42,7 +44,15 @@ const Editor = () => {
       }
     }
     if (elements[index].type === 'endNode') {
-      elements[index].data.body = <PlotGraph nodeId={params.source}/> ;
+      if (elements[index].data.label === 'Scatter Plot Node') {
+        elements[index].data.body = <PlotGraph nodeId={params.source}/>;
+      } else {
+        elements[index].data.body = <LRResultNode nodeId={params.source}/>;
+      }
+      console.log(elements[index]);
+      setElements(addEdge(params, elements));
+    } else if (elements[index].type === 'middleNode') {
+      elements[index].data.body = <LinearRegressionNode nodeId={params.source}/> ;
       console.log(elements[index]);
       setElements(addEdge(params, elements));
     } else {
@@ -92,21 +102,37 @@ const Editor = () => {
         data: { label: 'File',
                 body: <FileUpload nodeId={id}/> },
       };
-    } else if (type === 'middleNode') {
+    } else if (type === 'linearRegressionNode') {
       newNode = {
         id,
-        type,
+        type: 'middleNode',
         position,
         data: { label: 'Linear Regression Node',
-                body: <p>Configure your linear regression model here</p> },
+                body: <LinearRegressionNode nodeId="" /> },
+      };
+    } else if (type === 'scatterPlotNode') {
+      newNode = {
+        id,
+        type: 'endNode',
+        position,
+        data: { label: 'Scatter Plot Node',
+                body: <PlotGraph nodeId="" /> },
+      };
+    } else if (type === 'lrResultNode') {
+      newNode = {
+        id,
+        type: 'endNode',
+        position,
+        data: { label: 'Linear Regression Result Node',
+                body: <LRResultNode nodeId="" /> },
       };
     } else {
       newNode = {
         id,
         type,
         position,
-        data: { label: 'Scatter Plot Node',
-                body: <PlotGraph nodeId=""/> },
+        data: { label: 'Node',
+                body: <p>this is a node</p> },
       };
     }
 

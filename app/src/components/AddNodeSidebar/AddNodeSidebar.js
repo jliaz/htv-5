@@ -72,13 +72,13 @@ const AddNodeSidebar = () => {
                 alignItems="flex-start"
                 spacing={2}>
                   <Grid item>
-                    <div className="flowboat-node middle-node" style={newNodeStyle} draggable>
-                      <div className="pocket-node-text">Linear Regression</div>
+                    <div className="flowboat-node middle-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'assemblyAINode')} draggable>
+                      <div className="pocket-node-text">Assembly AI</div>
                     </div>
                 </Grid>
                 <Grid item>
-                    <div className="flowboat-node middle-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
-                      <div className="pocket-node-text">Multilinear Regression</div>
+                    <div className="flowboat-node middle-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'linearRegressionNode')} draggable>
+                      <div className="pocket-node-text">Linear Regression</div>
                     </div>
                 </Grid>
             </Grid>
@@ -90,8 +90,13 @@ const AddNodeSidebar = () => {
                 alignItems="flex-start"
                 spacing={2}>
               <Grid item>
-                <div className="flowboat-node end-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'endNode')} draggable>
+                <div className="flowboat-node end-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'scatterPlotNode')} draggable>
                   <div className="pocket-node-text">Scatter Plot</div>
+                </div>
+              </Grid>
+              <Grid item>
+                <div className="flowboat-node end-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'lrResultNode')} draggable>
+                  <div className="pocket-node-text">Linear Regression Result</div>
                 </div>
               </Grid>
             </Grid>

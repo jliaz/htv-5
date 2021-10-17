@@ -20,7 +20,7 @@ function MiddleNode({ data }) {
         </Grid>
         <Grid container direction="row" justifyContent="center" alignItems="center">
             <Box sx={{
-                height: 50,
+                height: 100,
                 width: 15,
                 backgroundColor: Colors.orange,
                 borderRadius: '15px 0px 0px 15px'
@@ -28,6 +28,7 @@ function MiddleNode({ data }) {
             <Handle
               type="target"
               position="left"
+              id="a"
               style={{ width: '20px', top: '60%', height: '70px', background: 'none', border: 'none' }}
               isConnectable={true}
             />
@@ -42,7 +43,7 @@ function MiddleNode({ data }) {
             { data.body }
           </Box>
           <Box sx={{
-            height: 50,
+            height: 100,
             width: 15,
             backgroundColor: Colors.orange,
             borderRadius: '0px 15px 15px 0px'
@@ -50,6 +51,7 @@ function MiddleNode({ data }) {
             <Handle
               type="source"
               position="right"
+              id="b"
               style={{ width: '20px', top: '60%', height: '70px', background: 'none', border: 'none'}}
               isConnectable={true}
             />

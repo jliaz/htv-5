@@ -1,12 +1,12 @@
 import React from "react";
-import ScatterPlot from "./ScatterPlot";
+import ScatterPlot from "../ScatterPlot/ScatterPlot";
 // import * as d3 from "d3";
 // import data from '../../data/sample.csv';
 import { Box } from "@mui/system";
 // import { spacing } from "@mui/system";
 // import { Divider } from "@mui/material";
 
-export default class PlotGraph extends React.Component {
+export default class LRResultNode extends React.Component {
   constructor(props) {
       super(props);
 
@@ -15,8 +15,8 @@ export default class PlotGraph extends React.Component {
           data: [],
           options: [],
           allData: [],
-          xVar: "percblack",
-          yVar: "percbelowpoverty"
+          xVar: "percprof",
+          yVar: "percollege"
       };
   }
 
@@ -72,20 +72,22 @@ export default class PlotGraph extends React.Component {
             <div className="control-container">
               <div className="control-wrapper">
                 <label htmlFor="xVar">X Variable:</label>
-                <select id="xVar" value={this.state.xVar} className="custom-select" onChange={(d) => this.setState({ xVar: d.target.value })}>
+                {/* <select id="xVar" value={this.state.xVar} className="custom-select" onChange={(d) => this.setState({ xVar: d.target.value })}>
                   {this.state.options.map((d) => {
                       return <option key={d}>{d}</option>
                   })}
-                </select>
+                </select> */}
+                <div style={{display: "inline"}}>&nbsp;{this.state.xVar}</div>
               </div>
 
             <div className="control-wrapper">
               <label htmlFor="yVar">Y Variable:</label>
-              <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
+              {/* <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
                 {this.state.options.map((d) => {
                     return <option key={d}>{d}</option>
                 })}
-              </select>
+              </select> */}
+              <div style={{display: "inline"}}>&nbsp;{this.state.yVar}</div>
             </div>                        
           </div>
           <p></p>
@@ -94,7 +96,7 @@ export default class PlotGraph extends React.Component {
             yTitle={this.state.yVar}
             data={getAllData(this.state.xVar, this.state.yVar, this.state.data)}
             />
-         </> : <><Box>Please connect a file node</Box></>
+         </> : <><Box>Please connect a linear regression node</Box></>
 
         }
         </div>

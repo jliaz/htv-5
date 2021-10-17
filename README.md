@@ -6,7 +6,8 @@
 
 ## To run app:
 1. `cd app`
-2. `npm start`
+2. `npm install`
+3. `npm start`
 
 ## To view components in storybook UI
 1. `cd app`
