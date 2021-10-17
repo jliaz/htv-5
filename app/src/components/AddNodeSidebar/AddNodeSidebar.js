@@ -11,6 +11,14 @@ const onDragStart = (event, nodeType) => {
   event.dataTransfer.effectAllowed = 'move';
 };
 
+const newNodeStyle = {
+  display: 'flex', 
+  justifyContent:'center', 
+  alignItems:'center', 
+  paddingRight:'10px', 
+  paddingLeft:'10px'
+}
+
 const AddNodeSidebar = () => {
 
   const [checked, setChecked] = React.useState(true);
@@ -46,12 +54,12 @@ const AddNodeSidebar = () => {
                 alignItems="flex-start"
                 spacing={2}>
               <Grid item>
-                <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'fileUploadNode')} draggable>
+                <div className="flowboat-node start-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'fileUploadNode')} draggable>
                   <div className="pocket-node-text">File Upload</div>
                 </div>
               </Grid>
               <Grid item>
-                <div className="flowboat-node start-node" onDragStart={(event) => onDragStart(event, 'voiceUploadNode')} draggable>
+                <div className="flowboat-node start-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'voiceUploadNode')} draggable>
                   <div className="pocket-node-text">Voice Upload</div>
                 </div>
               </Grid>
@@ -64,12 +72,12 @@ const AddNodeSidebar = () => {
                 alignItems="flex-start"
                 spacing={2}>
                   <Grid item>
-                    <div className="flowboat-node middle-node" onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
+                    <div className="flowboat-node middle-node" style={newNodeStyle} draggable>
                       <div className="pocket-node-text">Linear Regression</div>
                     </div>
                 </Grid>
                 <Grid item>
-                    <div className="flowboat-node middle-node" onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
+                    <div className="flowboat-node middle-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'middleNode')} draggable>
                       <div className="pocket-node-text">Multilinear Regression</div>
                     </div>
                 </Grid>
@@ -82,7 +90,7 @@ const AddNodeSidebar = () => {
                 alignItems="flex-start"
                 spacing={2}>
               <Grid item>
-                <div className="flowboat-node end-node" onDragStart={(event) => onDragStart(event, 'endNode')} draggable>
+                <div className="flowboat-node end-node" style={newNodeStyle} onDragStart={(event) => onDragStart(event, 'endNode')} draggable>
                   <div className="pocket-node-text">Scatter Plot</div>
                 </div>
               </Grid>

@@ -21,7 +21,7 @@ const initialElements = [
     type: 'startNode',
     data: { label: 'File',
             body: <FileUpload/> },
-    position: { x: 250, y: 5 },
+    position: { x: 700, y: 175 },
   },
 ];
 
@@ -107,6 +107,7 @@ const Editor = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
+            defaultZoom={0.5}
           >
             <Controls/>
           </ReactFlow>
