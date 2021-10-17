@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Papa from 'papaparse';
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-
+import "./FileUpload.css";
 
 const ACCEPTED_FILE_FORMATS = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel";
 const MAX_ROWS = 5;

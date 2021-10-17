@@ -1,0 +1,15 @@
+.MuiDataGrid-root {
+    color: white;
+}
+
+.MuiToolbar-root{
+    color: white;
+}
+
+.MuiTablePagination-actions button span{
+    color: white;
+}
+
+.MuiSvgIcon-root {
+    color:white;
+}
