@@ -1,7 +1,7 @@
 import React from "react";
 import ScatterPlot from "../ScatterPlot/ScatterPlot";
-// import * as d3 from "d3";
-// import data from '../../data/sample.csv';
+import * as d3 from "d3";
+import data from '../../data/sample.csv';
 import { Box } from "@mui/system";
 // import { spacing } from "@mui/system";
 // import { Divider } from "@mui/material";
@@ -20,38 +20,11 @@ export default class LRResultNode extends React.Component {
       };
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.nodeId !== prevProps.nodeId) {
-      const localData = localStorage.getItem(`${this.props.nodeId}_data`);
-      console.log("localData: ", localData, " id: ", this.props.nodeId);
-      if (localData !== undefined && localData !== "undefined" && this.props.nodeId !== "" && localData.data !== null) {
-        const data = JSON.parse(localData).data;
-        let options = data.length === 0 ? [] : Object.keys(data[0]);
-        console.log("options", options);
-        options = options.filter((d) => d !== "county" && d !== "state");
-        this.setState({ 
-          data: JSON.parse(localData).data,
-          options
-        });
-      }
-    }
-  }
-
   componentDidMount() {
       // Load data when the component mounts
-      const localData = localStorage.getItem(`${this.props.nodeId}_data`);
-      console.log("localData: ", localData, " id: ", this.props.nodeId);
-      if (localData !== undefined && localData !== "undefined" && this.props.nodeId !== "" && localData.data !== null) {
-        const data = JSON.parse(localData).data;
-        let options = data.length === 0 ? [] : Object.keys(data[0]);
-        console.log("options", options);
-        options = options.filter((d) => d !== "county" && d !== "state");
-        this.setState({ 
-          data: JSON.parse(localData).data,
-          options
-        });
-      }
-      // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
+      d3.csv(data, (err, data) => {
+        this.setState({ data: data });
+    });
   }
   render() {
     function getAllData (x, y, data) {
