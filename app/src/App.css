@@ -1,7 +1,7 @@
 .App {
   font-family: "Work Sans";
   background-color: #194769;
-  overflow-y:h idden;
+  overflow-y:hidden;
 }
 
 /* This is for the editor canvas */
@@ -71,4 +71,13 @@
 }
 .axis-label, .legend-label {
   fill: white;
+}
+
+.home-page-jumbotron{
+  height: 70vh;
+  width: 100%;
+  background-color: #194769;
+  
+  /* background-color: #173E61;
+  background-color: #627f9a; */
 }
