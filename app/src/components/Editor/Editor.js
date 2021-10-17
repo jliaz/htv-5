@@ -10,7 +10,7 @@ import StartNode from '../StartNode/StartNode';
 import MiddleNode from '../MiddleNode/MiddleNode';
 import EndNode from '../EndNode/EndNode';
 
-import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
+// import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
 import FileUpload from '../FileUpload/FileUpload';
 import "./Editor.css";
@@ -21,7 +21,7 @@ const initialElements = [
     type: 'startNode',
     data: { label: 'File',
             body: <FileUpload/> },
-    position: { x: 700, y: 175 },
+    position: { x: 380, y: 100 },
   },
 ];
 
@@ -107,7 +107,7 @@ const Editor = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
-            defaultZoom={0.5}
+            defaultZoom={1}
           >
             <Controls/>
           </ReactFlow>

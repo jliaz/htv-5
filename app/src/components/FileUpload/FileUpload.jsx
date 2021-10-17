@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Papa from 'papaparse';
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
+// import { GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import "./FileUpload.css";
 
 const ACCEPTED_FILE_FORMATS = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel";
@@ -32,9 +33,9 @@ function FileUpload() {
           newCols.push({field: fileData.meta.fields[i], headerName: fileData.meta.fields[i]});
         }
         const newRows = [];
-        for (var i = 1; i < numRows; i++) {
-          const newRow = fileData.data[i];
-          newRows.push({...newRow,id: i});
+        for (var j = 1; j < numRows; j++) {
+          const newRow = fileData.data[j];
+          newRows.push({...newRow,id: j});
         }
         setGridColumns(newCols);
         setGridRows(newRows);
