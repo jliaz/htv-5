@@ -69,6 +69,7 @@ export default class LinearRegressionNode extends React.Component {
           data: JSON.parse(localData).data,
           options
         });
+        getData(data)
       }
       // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
