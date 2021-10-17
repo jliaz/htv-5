@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -20,7 +20,7 @@ const initialElements = [
     id: '1',
     type: 'startNode',
     data: { label: 'File',
-            body: <FileUpload/> },
+            body: <FileUpload nodeId="1"/> },
     position: { x: 380, y: 100 },
   },
 ];
@@ -32,7 +32,24 @@ const Editor = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
-  const onConnect = (params) => setElements((els) => addEdge(params, els));
+  const onConnect = (params) => {
+    console.log(params);
+    var index = -1;
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].id === params.target) {
+        index = i;
+        break;
+      }
+    }
+    if (elements[index].type === 'endNode') {
+      elements[index].data.body = <PlotGraph nodeId={params.source}/> ;
+      console.log(elements[index]);
+      setElements(addEdge(params, elements));
+    } else {
+      setElements((els) => addEdge(params, els));
+    }
+    
+  }
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
 
@@ -43,6 +60,12 @@ const Editor = () => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
   };
+
+
+  useEffect(() => {
+    console.log("elements have change", elements);
+    localStorage.setItem("nodes", JSON.stringify(elements));
+  }, [elements])
 
   const onDrop = (event) => {
     event.preventDefault();
@@ -60,17 +83,18 @@ const Editor = () => {
     //   data: { label: `${type} node` },
     // };
     let newNode = null
+    const id = getId();
     if (type === 'fileUploadNode') {
       newNode = {
-        id: getId(),
+        id,
         type: 'startNode',
         position,
         data: { label: 'File',
-                body: <FileUpload/> },
+                body: <FileUpload nodeId={id}/> },
       };
     } else if (type === 'middleNode') {
       newNode = {
-        id: getId(),
+        id,
         type,
         position,
         data: { label: 'Linear Regression Node',
@@ -78,11 +102,11 @@ const Editor = () => {
       };
     } else {
       newNode = {
-        id: getId(),
+        id,
         type,
         position,
         data: { label: 'Scatter Plot Node',
-                body: <PlotGraph /> },
+                body: <PlotGraph nodeId=""/> },
       };
     }
 
