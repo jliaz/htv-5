@@ -10,7 +10,7 @@ const ACCEPTED_FILE_FORMATS = ".csv, application/vnd.openxmlformats-officedocume
 const MAX_ROWS = 5;
 
 
-function FileUpload() {
+function FileUpload(props) {
     const [ fileData, setFileData ] = useState();
     const [ gridRows, setGridRows ] = useState([]);
     const [ gridColumns, setGridColumns ] = useState([]);
@@ -24,7 +24,6 @@ function FileUpload() {
     }
 
     useEffect(() => {
-      console.log("fileDAATA", fileData);
       if (fileData !== undefined) {
         const numRows = fileData.data.length > MAX_ROWS ? MAX_ROWS : fileData.data.length;
         const newCols = [];
@@ -39,6 +38,7 @@ function FileUpload() {
         setGridColumns(newCols);
         setGridRows(newRows);
       }
+      localStorage.setItem(`${props.nodeId}_data`, JSON.stringify(fileData));
     }, [fileData])
 
     return (

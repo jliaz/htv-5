@@ -2,6 +2,7 @@ import React from "react";
 import ScatterPlot from "./ScatterPlot";
 import * as d3 from "d3";
 import data from '../../data/sample.csv';
+import { Box } from "@mui/system";
 
 export default class PlotGraph extends React.Component {
   constructor(props) {
@@ -10,63 +11,91 @@ export default class PlotGraph extends React.Component {
       // Set initial state
       this.state = {
           data: [],
-          xVar: "percollege",
+          options: [],
+          allData: [],
+          xVar: "percblack",
           yVar: "percbelowpoverty"
       };
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.nodeId !== prevProps.nodeId) {
+      const localData = localStorage.getItem(`${this.props.nodeId}_data`);
+      console.log("localData: ", localData, " id: ", this.props.nodeId);
+      if (localData !== undefined && localData !== "undefined" && this.props.nodeId !== "" && localData.data !== null) {
+        const data = JSON.parse(localData).data;
+        let options = data.length === 0 ? [] : Object.keys(data[0]);
+        console.log("options", options);
+        options = options.filter((d) => d !== "county" && d !== "state");
+        this.setState({ 
+          data: JSON.parse(localData).data,
+          options
+        });
+      }
+    }
+  }
+
   componentDidMount() {
       // Load data when the component mounts
-      d3.csv(data, (err, data) => {
-        this.setState({ data: data });
-      });
+      const localData = localStorage.getItem(`${this.props.nodeId}_data`);
+      console.log("localData: ", localData, " id: ", this.props.nodeId);
+      if (localData !== undefined && localData !== "undefined" && this.props.nodeId !== "" && localData.data !== null) {
+        const data = JSON.parse(localData).data;
+        let options = data.length === 0 ? [] : Object.keys(data[0]);
+        console.log("options", options);
+        options = options.filter((d) => d !== "county" && d !== "state");
+        this.setState({ 
+          data: JSON.parse(localData).data,
+          options
+        });
+      }
       // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
   render() {
-    // Get list of possible x and y variables
-    let options = this.state.data.length === 0 ? [] : Object.keys(this.state.data[0]);
-    options = options.filter((d) => d !== "county" && d !== "state");
-
-    // Store all of the data to be plotted 
-    let allData = this.state.data.map((d) => {
+    function getAllData (x, y, data) {
+      const allData = data.map((d) => {
         return {
-            x: d[this.state.xVar],
-            y: d[this.state.yVar],
+            x: parseInt(d[x], 10),
+            y: parseInt(d[y], 10),
             label: d.county + ", " + d.state
-        };
-    });
+        }; 
+      });
+      return allData;
+    }
 
     return (
       <div className="container">
-        <div className="control-container">
+        { this.props.nodeId !== "" ? 
+        <> 
+            <div className="control-container">
+              <div className="control-wrapper">
+                <label htmlFor="xVar">X Variable:</label>
+                <select id="xVar" value={this.state.xVar} className="custom-select" onChange={(d) => this.setState({ xVar: d.target.value })}>
+                  {this.state.options.map((d) => {
+                      return <option key={d}>{d}</option>
+                  })}
+                </select>
+              </div>
 
-          {/* X Variable Select Menu */}
-          <div className="control-wrapper">
-            <label htmlFor="xVar">X Variable:</label>
-            <select id="xVar" value={this.state.xVar} className="custom-select" onChange={(d) => this.setState({ xVar: d.target.value })}>
-              {options.map((d) => {
-                  return <option key={d}>{d}</option>
-              })}
-            </select>
+            <div className="control-wrapper">
+              <label htmlFor="yVar">Y Variable:</label>
+              <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
+                {this.state.options.map((d) => {
+                    return <option key={d}>{d}</option>
+                })}
+              </select>
+            </div>                        
           </div>
 
-          {/* Y Variable Select Menu */}
-          <div className="control-wrapper">
-            <label htmlFor="yVar">Y Variable:</label>
-            <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
-              {options.map((d) => {
-                  return <option key={d}>{d}</option>
-              })}
-            </select>
-          </div>                        
-        </div>
+          <ScatterPlot
+            xTitle={this.state.xVar}
+            yTitle={this.state.yVar}
+            data={getAllData(this.state.xVar, this.state.yVar, this.state.data)}
+            />
+         </> : <><Box>Please connect a file node</Box></>
 
-        {/* Render scatter plot */}
-        <ScatterPlot
-          xTitle={this.state.xVar}
-          yTitle={this.state.yVar}
-          data={allData}
-          />
-      </div>
+        }
+        </div>
     )
   }
 }
