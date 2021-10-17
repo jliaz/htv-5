@@ -1,6 +1,7 @@
 .App {
   font-family: "Work Sans";
   background-color: #194769;
+  overflow-y:h idden;
 }
 
 /* This is for the editor canvas */
@@ -11,7 +12,6 @@
 
 .flowboat-node {
   background-color: #173E61;
-  border: 1px solid white;
   border-left: 0;
   padding: 1;
   min-height: 100px;

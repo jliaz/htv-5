@@ -8,7 +8,7 @@ import NavBar from './components/NavBar/NavBar';
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      <NavBar title="Demo Canvas"/>
       <Editor />
       {/* <PlotGraph /> */}
     </div>
