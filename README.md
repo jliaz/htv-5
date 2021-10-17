@@ -1,4 +1,4 @@
-# htv-5
+# flowboat - A Node Based Machine Learning App
 
 ## To run app:
 1. `cd app`
