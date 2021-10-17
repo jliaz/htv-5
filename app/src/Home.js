@@ -38,7 +38,7 @@ function Home() {
           </Grid>
         </Grid>
         <Grid container xs={12} justifyContent="center" mt={10}>
-          <Grid xs={3} ml={34} mr={24} mt={12}>
+          <Grid xs={3} ml={34} mr={24} mt={22}>
             <h1>Abundant Node Pack</h1>
             <h2>Find the nodes you need here. Use them to build whatever you want!</h2>
           </Grid>
