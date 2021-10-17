@@ -13,3 +13,7 @@
 .MuiSvgIcon-root {
     color:white;
 }
+
+.MuiDataGrid-cell, .MuiDataGrid-columnHeaderTitle{
+    color: white;
+}
