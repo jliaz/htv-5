@@ -52,7 +52,6 @@ export default class LRResultNode extends React.Component {
                 </select> */}
                 <div style={{display: "inline"}}>&nbsp;{this.state.xVar}</div>
               </div>
-
             <div className="control-wrapper">
               <label htmlFor="yVar">Y Variable:</label>
               {/* <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
@@ -61,7 +60,16 @@ export default class LRResultNode extends React.Component {
                 })}
               </select> */}
               <div style={{display: "inline"}}>&nbsp;{this.state.yVar}</div>
-            </div>                        
+            </div>
+            <div className="control-wrapper">
+              <label htmlFor="yVar">Regression Result:</label>
+              {/* <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
+                {this.state.options.map((d) => {
+                    return <option key={d}>{d}</option>
+                })}
+              </select> */}
+              <div style={{display: "inline"}}>&nbsp;y = 97X - 3</div>
+            </div>                            
           </div>
           <p></p>
           <ScatterPlot
