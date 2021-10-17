@@ -21,7 +21,7 @@ const newNodeStyle = {
 
 const AddNodeSidebar = () => {
 
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
 
   const handleChange = () => {
     setChecked((prev) => !prev);
