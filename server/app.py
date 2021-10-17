@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, Response
 from flask_marshmallow import Marshmallow
 import linearRegressionModel as lrm
+import requests
 
 
 app = Flask(__name__)
@@ -77,8 +78,8 @@ x_coord_name = ""
 y_coord_name = ""
 
 
-@app.route('/getLinearRegression', methods = ['GET'])
-def posts_dataset():
+@app.route('/getLinearRegressionFromPath', methods = ['GET'])
+def posts_dataset_from_file():
 
     dataset_loc = request.json['dataset_loc']
 
@@ -91,10 +92,46 @@ def posts_dataset():
     return_obj["linearReg"] = lrm.getRegressionLine(dataset_loc, x_coord_name, y_coord_name)
     return jsonify(return_obj)
 
+
+@app.route('/getLinearRegression', methods = ['GET'])
+def posts_dataset():
+
+    json_data = request.json['json_data']
+
+    x_coord_name = request.json['x_coord_name']
+    y_coord_name = request.json['y_coord_name']
+
+
+    return_obj = {}
+
+    return_obj["linearReg"] = lrm.getRegressionLineJson(json_data, x_coord_name, y_coord_name)
+    return jsonify(return_obj)
+
+
 @app.route('/getDatasetLoc', methods = ['GET'])
 def get_dataset():
 
     return jsonify(dataset_loc)
+
+@app.route('/callAssemblyAi', methods = ['GET'])
+def callAssemblyAi():
+
+    endpoint = "https://api.assemblyai.com/v2/transcript"
+
+    json = {
+    "audio_url": "https://s3-us-west-2.amazonaws.com/blog.assemblyai.com/audio/8-7-2018-post/7510.mp3"
+    }
+
+    headers = {
+        "authorization": "7d077f67b1f24ba59e44adab26ac5d3a",
+        "content-type": "application/json"
+    }
+
+    response = requests.post(endpoint, json=json, headers=headers)
+
+    print(response.json())
+
+    return Response(status = 200)
 
 if __name__ == "__main__":
     app.run(debug=True) 
