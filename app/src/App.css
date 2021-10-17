@@ -73,11 +73,58 @@
   fill: white;
 }
 
-.home-page-jumbotron{
-  height: 70vh;
-  width: 100%;
+.home-page-jumbotron {
+  height: 50vh;
+  width: 100vw;
   background-color: #194769;
-  
+  padding-top: 140px;
   /* background-color: #173E61;
   background-color: #627f9a; */
+}
+
+.home-page-jumbotron h1 {
+  color: rgba(255, 255, 255, 0.979);
+  /* width: 45%; */
+  margin-left: 8%;
+  font-weight: bold;
+  font-size: 50px;
+  display: inline-block;
+}
+
+.home-page-jumbotron h2 {
+  color: rgba(255, 255, 255, 0.712);
+  /* width: 40%; */
+  margin-left: 8%;
+  display: inline-block;
+}
+
+.home-page-jumbotron img {
+  /* color: rgba(255, 255, 255, 0.712); */
+  width: 90%;
+  margin-left: 5%;
+  display: inline-block;
+  /* margin-left: 8%; */
+}
+
+.home-page-section1 {
+  height: 30vh;
+  width: 100vw;
+  /* background-color: #194769; */
+  /* padding-top: 100px; */
+  /* background-color: #173E61; */
+  background-color: #627f9a;
+}
+
+.home-page-section1 h1 {
+  color: rgba(255, 255, 255, 0.979);
+  /* width: 45%; */
+  margin-left: 8%;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.home-page-section1 h2 {
+  color: rgba(255, 255, 255, 0.712);
+  /* width: 40%; */
+  margin-left: 8%;
 }
