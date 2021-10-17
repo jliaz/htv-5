@@ -74,7 +74,7 @@
 }
 
 .home-page-jumbotron {
-  height: 50vh;
+  height: 700px;
   width: 100vw;
   background-color: #194769;
   padding-top: 140px;
@@ -104,27 +104,38 @@
   margin-left: 5%;
   display: inline-block;
   /* margin-left: 8%; */
+  border-radius: 15px;
 }
 
 .home-page-section1 {
-  height: 30vh;
+  height: 100%;
   width: 100vw;
   /* background-color: #194769; */
-  /* padding-top: 100px; */
+  padding-top: 50px;
+  padding-bottom: 120px;
   /* background-color: #173E61; */
   background-color: #627f9a;
 }
 
 .home-page-section1 h1 {
   color: rgba(255, 255, 255, 0.979);
-  /* width: 45%; */
-  margin-left: 8%;
   font-weight: bold;
   font-size: 50px;
+  font-weight: bold;
 }
 
 .home-page-section1 h2 {
   color: rgba(255, 255, 255, 0.712);
   /* width: 40%; */
-  margin-left: 8%;
+  /* margin-left: 8%; */
+}
+
+.home-page-section1 img {
+  border-radius: 15px;
+}
+
+.home-page-footer {
+  height: 180px;
+  color: rgba(255, 255, 255, 0.836);
+  text-align: center;
 }

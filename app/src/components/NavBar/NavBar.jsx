@@ -57,7 +57,7 @@ function NavBar(props) {
       <Box sx={{ flexGrow: 1, display: 'flex', borderBottom: '2px solid #627F9A', margin:'0px', height:'2 0px', width:'100%', alignItems:'center', position:'absolute', zIndex:'9999'}}>
         <AppBar position="static" elevation={0} sx={{fontFamily: 'Work-sans', backgroundColor:'#194769'}}>
           <Toolbar  >
-            <IconButton sx={{marginBottom:'3px'}} href="/">
+            <IconButton sx={{marginBottom:'3px', paddingTop:"0px"}} href="/">
               <img src={dropIcon} alt="drop icon"/>
             </IconButton>
             <AddNodeSidebar/>
