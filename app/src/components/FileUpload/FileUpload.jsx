@@ -46,7 +46,7 @@ function FileUpload() {
           { fileData === undefined ? 
           <>
           <div style={{height: 300}}>
-            <Box>
+            <Box style={{marginBottom:'10px'}}>
               Please upload a CSV file.
             </Box>
             <input
@@ -56,8 +56,8 @@ function FileUpload() {
             accept={ACCEPTED_FILE_FORMATS}
             ref={inputRef}
             onChange={() => {readFile(inputRef.current.files[0])}} />
-            <label htmlFor="contained-button-file">
-              <Button variant="contained" color="primary" component="span">
+            <label htmlFor="contained-button-file" style={{top:'50%'}}>
+              <Button variant="contained" style={{backgroundColor: '#6FEF8D', display: 'flex', alignSelf:'center'}} component="span">
                 Upload
               </Button>
             </label> 
