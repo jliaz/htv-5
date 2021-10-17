@@ -58,23 +58,22 @@ export default class LRResultNode extends React.Component {
       // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
   render() {
-    getRegData(this.state.xVar, this.state.yVar)
+    // getRegData(this.state.xVar, this.state.yVar)
     async function getRegData (xVar, yVar) {
       let fetch = require('node-fetch');
     
-      const data = await fetch('http://localhost:5000/getLinearRegressionFromPath', {
+      const response = await fetch('http://localhost:5000/getLinearRegressionFromPath', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
           "dataset_loc": "/Users/ansel/Desktop/HTV5/htv-5/server/sample.csv", 
           "x_coord_name": xVar,
           "y_coord_name": yVar})
-      }).then(response => {
-        // setTimeout(30000)
-        this.setState({ regression: response.json().linearReg });
-        return response.json().linearReg;
-      }).catch(err => {console.log(err);});
-      return await data
+      }).then(response => 
+        // resolve(responses[0]);
+        response.json() )//.then(data => 
+      //   {console.log(data)} )
+      return response.json
     }
   
   
@@ -122,7 +121,7 @@ export default class LRResultNode extends React.Component {
                     return <option key={d}>{d}</option>
                 })}
               </select> */}
-              <div style={{display: "inline"}}>&nbsp;{this.state.regression}</div>
+              <div style={{display: "inline"}}>&nbsp;{String(getRegData(this.state.xVar, this.state.yVar))}</div>
             </div>                    
           </div>
           

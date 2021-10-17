@@ -54,6 +54,29 @@ export default class PlotGraph extends React.Component {
       // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
   render() {
+    // getRegData(this.state.xVar, this.state.yVar)
+    async function getRegData (xVar, yVar) {
+      let fetch = require('node-fetch');
+
+      const response = await fetch('http://localhost:5000/getLinearRegressionFromPath', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+          "dataset_loc": "/Users/ansel/Desktop/HTV5/htv-5/server/sample.csv", 
+          "x_coord_name": xVar,
+          "y_coord_name": yVar})
+      })
+      .then(response => 
+        response.json()
+      ).then(data => 
+        {console.log(data)} )
+      
+      const data = await response.json();
+        console.log(data)
+      return data.linearReg
+    }
+
+
     function getAllData (x, y, data) {
       const allData = data.map((d) => {
         return {
@@ -94,6 +117,15 @@ export default class PlotGraph extends React.Component {
             yTitle={this.state.yVar}
             data={getAllData(this.state.xVar, this.state.yVar, this.state.data)}
             />
+            <div className="control-wrapper">
+              <label htmlFor="regression">Regression:</label>
+              {/* <select id="regression" value={this.state.regression} onChange={(d) => this.setState({ regression: getRegData(this.state.xVar, this.state.yVar) })}>
+                {this.state.options.map((d) => {
+                    return <option key={d}>{d}</option>
+                })}
+              </select> */}
+              <div style={{display: "inline"}}>&nbsp;{String(getRegData(this.state.xVar, this.state.yVar))}</div>
+            </div>    
          </> : <><Box>Please connect a file node</Box></>
 
         }
