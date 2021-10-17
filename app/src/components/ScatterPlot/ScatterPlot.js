@@ -9,7 +9,6 @@ export default class ScatterPlot extends React.Component {
     // Graph width and height - accounting for margins
     this.drawWidth = this.props.width - this.props.margin.left - this.props.margin.right;
     this.drawHeight = this.props.height - this.props.margin.top - this.props.margin.bottom;
-
   }
   componentDidMount() {
       this.update();
@@ -115,7 +114,7 @@ ScatterPlot.defaultProps = {
   width: 300,
   height: 300,
   radius: 5,
-  color: "blue",
+  color: '#f2855e',
   margin: {
       left: 50,
       right: 10,
