@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Papa from 'papaparse';
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
-
+import "./FileUpload.css";
 
 const ACCEPTED_FILE_FORMATS = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel";
 const MAX_ROWS = 5;
@@ -45,7 +45,7 @@ function FileUpload() {
       <Grid>
           { fileData === undefined ? 
           <>
-          <div style={{height: 300}}>
+          <div style={{}}>
             <Box style={{marginBottom:'10px'}}>
               Please upload a CSV file.
             </Box>
@@ -57,7 +57,7 @@ function FileUpload() {
             ref={inputRef}
             onChange={() => {readFile(inputRef.current.files[0])}} />
             <label htmlFor="contained-button-file" style={{top:'50%'}}>
-              <Button variant="contained" style={{backgroundColor: '#6FEF8D', display: 'flex', alignSelf:'center'}} component="span">
+              <Button variant="contained" style={{backgroundColor: '#6FEF8D', display: 'flex', alignSelf:'center', borderRadius:"5px"}} component="span">
                 Upload
               </Button>
             </label> 
