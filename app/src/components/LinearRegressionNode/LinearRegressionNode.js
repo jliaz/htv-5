@@ -6,6 +6,25 @@ import { Box } from "@mui/system";
 // import { spacing } from "@mui/system";
 // import { Divider } from "@mui/material";
 
+
+
+function getData (props) {
+  let fetch = require('node-fetch');
+
+  fetch('http://localhost:5000/getLinearRegression', {
+  method: 'GET',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({
+      "json_data": props.data, 
+      "x_coord_name": "percasian",
+      "y_coord_name": "percwhite"})
+  }).then(response => {
+    return response.json();
+  }).catch(err => {console.log(err);});
+}
+
+
+
 export default class LinearRegressionNode extends React.Component {
   constructor(props) {
       super(props);
@@ -53,6 +72,10 @@ export default class LinearRegressionNode extends React.Component {
       }
       // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
+
+  getData
+
+
   render() {
     // function getAllData (x, y, data) {
     //   const allData = data.map((d) => {
@@ -101,3 +124,4 @@ export default class LinearRegressionNode extends React.Component {
     )
   }
 }
+
