@@ -80,7 +80,7 @@ x_coord_name = ""
 y_coord_name = ""
 
 
-@app.route('/getLinearRegressionFromPath', methods = ['GET'])
+@app.route('/getLinearRegressionFromPath', methods = ['POST'])
 def posts_dataset_from_file():
 
     dataset_loc = request.json['dataset_loc']
@@ -95,7 +95,7 @@ def posts_dataset_from_file():
     return jsonify(return_obj)
 
 
-@app.route('/getLinearRegression', methods = ['GET'])
+@app.route('/getLinearRegression', methods = ['POST'])
 def posts_dataset():
 
     json_data = request.json['json_data']

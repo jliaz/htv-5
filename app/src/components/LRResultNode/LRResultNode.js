@@ -6,7 +6,10 @@ import { Box } from "@mui/system";
 // import { spacing } from "@mui/system";
 // import { Divider } from "@mui/material";
 
+
+
 export default class LRResultNode extends React.Component {
+
   constructor(props) {
       super(props);
 
@@ -16,18 +19,68 @@ export default class LRResultNode extends React.Component {
           options: [],
           allData: [],
           xVar: "percprof",
-          yVar: "percollege"
+          yVar: "percollege",
+          regression: "-3x+97"
       };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.nodeId !== prevProps.nodeId) {
+      const localData = localStorage.getItem(`${this.props.nodeId}_data`);
+      console.log("localData: ", localData, " id: ", this.props.nodeId);
+      if (localData !== undefined && localData !== "undefined" && this.props.nodeId !== "" && localData.data !== null) {
+        const data = JSON.parse(localData).data;
+        let options = data.length === 0 ? [] : Object.keys(data[0]);
+        console.log("options", options);
+        options = options.filter((d) => d !== "county" && d !== "state");
+        this.setState({ 
+          data: JSON.parse(localData).data,
+          options
+        });
+      }
+    }
   }
 
   componentDidMount() {
       // Load data when the component mounts
-      d3.csv(data, (err, data) => {
-        this.setState({ data: data });
-    });
+      const localData = localStorage.getItem(`${this.props.nodeId}_data`);
+      console.log("localData: ", localData, " id: ", this.props.nodeId);
+      if (localData !== undefined && localData !== "undefined" && this.props.nodeId !== "" && localData.data !== null) {
+        const data = JSON.parse(localData).data;
+        let options = data.length === 0 ? [] : Object.keys(data[0]);
+        console.log("options", options);
+        options = options.filter((d) => d !== "county" && d !== "state");
+        this.setState({ 
+          data: JSON.parse(localData).data,
+          options
+        });
+      }
+      // d3.csv('./data/sample.csv').then(data => this.setState({ data }));
   }
   render() {
+    getRegData(this.state.xVar, this.state.yVar)
+    async function getRegData (xVar, yVar) {
+      let fetch = require('node-fetch');
+    
+      const data = await fetch('http://localhost:5000/getLinearRegressionFromPath', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+          "dataset_loc": "/Users/ansel/Desktop/HTV5/htv-5/server/sample.csv", 
+          "x_coord_name": xVar,
+          "y_coord_name": yVar})
+      }).then(response => {
+        // setTimeout(30000)
+        this.setState({ regression: response.json().linearReg });
+        return response.json().linearReg;
+      }).catch(err => {console.log(err);});
+      return await data
+    }
+  
+  
+
     function getAllData (x, y, data) {
+      getRegData(x, y)
       const allData = data.map((d) => {
         return {
             x: parseInt(d[x], 10),
@@ -45,28 +98,39 @@ export default class LRResultNode extends React.Component {
             <div className="control-container">
               <div className="control-wrapper">
                 <label htmlFor="xVar">X Variable:</label>
-                {/* <select id="xVar" value={this.state.xVar} className="custom-select" onChange={(d) => this.setState({ xVar: d.target.value })}>
+                <select id="xVar" value={this.state.xVar} className="custom-select" onChange={(d) => this.setState({ xVar: d.target.value })}>
                   {this.state.options.map((d) => {
                       return <option key={d}>{d}</option>
                   })}
-                </select> */}
-                <div style={{display: "inline"}}>&nbsp;{this.state.xVar}</div>
+                </select>
+                {/* <div style={{display: "inline"}}>&nbsp;{this.state.xVar}</div> */}
               </div>
 
             <div className="control-wrapper">
               <label htmlFor="yVar">Y Variable:</label>
-              {/* <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
+              <select id="yVar" value={this.state.yVar} className="custom-select" onChange={(d) => this.setState({ yVar: d.target.value })}>
+                {this.state.options.map((d) => {
+                    return <option key={d}>{d}</option>
+                })}
+              </select>
+              {/* <div style={{display: "inline"}}>&nbsp;{this.state.yVar}</div> */}
+            </div>  
+            <div className="control-wrapper">
+              <label htmlFor="regression">Regression:</label>
+              {/* <select id="regression" value={this.state.regression} onChange={(d) => this.setState({ regression: getRegData(this.state.xVar, this.state.yVar) })}>
                 {this.state.options.map((d) => {
                     return <option key={d}>{d}</option>
                 })}
               </select> */}
-              <div style={{display: "inline"}}>&nbsp;{this.state.yVar}</div>
-            </div>                        
+              <div style={{display: "inline"}}>&nbsp;{this.state.regression}</div>
+            </div>                    
           </div>
+          
           <p></p>
           <ScatterPlot
             xTitle={this.state.xVar}
             yTitle={this.state.yVar}
+            // regression={getRegData(this.state.xVar, this.state.yVar)}
             data={getAllData(this.state.xVar, this.state.yVar, this.state.data)}
             />
          </> : <><Box>Please connect a linear regression node</Box></>
