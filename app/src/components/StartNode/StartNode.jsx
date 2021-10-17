@@ -6,22 +6,23 @@ import Grid from '@mui/material/Grid';
 import "@fontsource/work-sans";
 import { IconButton, Typography } from '@mui/material';
 import ClearSharpIcon from '@mui/icons-material/ClearSharp';
+import { Colors } from "../../Colors";
 
 function StartNode({ data }) {
   return (
     <>
       <Grid container spacing={0.5} direction="column" alignItems="flex-start">
         <Grid item>
-          <IconButton onClick={() => {console.log("hel")}}>
+          <IconButton onClick={() => {console.log("hel")}} style={{color: 'white', marginLeft: '-15px'}}>
             <ClearSharpIcon />
           </IconButton>
-          <Typography variant="p"> {data.label} </Typography>
+          <Typography variant="p" color='white'> {data.label} </Typography>
         </Grid>
         <Grid container direction="row" justifyContent="center" alignItems="center">
           <Box sx={{
               backgroundColor: '#21415E',
-              border: '1px solid white',
-              padding: 1,
+              border: '0.5px solid #627F9A',
+              padding: 5,
               minHeight: '100px',
               color: 'white'
           }}>
@@ -30,7 +31,7 @@ function StartNode({ data }) {
           <Box sx={{
             height: 100,
             width: 15,
-            backgroundColor: 'green',
+            backgroundColor: Colors.green,
             borderRadius: '0px 15px 15px 0px'
           }}>
             <Handle

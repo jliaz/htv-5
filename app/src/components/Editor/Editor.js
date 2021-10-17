@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   addEdge,
@@ -12,14 +12,16 @@ import EndNode from '../EndNode/EndNode';
 
 import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import PlotGraph from '../ScatterPlot/PlotGraph';
+import FileUpload from '../FileUpload/FileUpload';
+import "./Editor.css";
 
 const initialElements = [
   {
     id: '1',
     type: 'startNode',
     data: { label: 'File',
-            body: <p>Add your file here.</p> },
-    position: { x: 250, y: 5 },
+            body: <FileUpload nodeId="1"/> },
+    position: { x: 700, y: 175 },
   },
 ];
 
@@ -30,7 +32,24 @@ const Editor = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
-  const onConnect = (params) => setElements((els) => addEdge(params, els));
+  const onConnect = (params) => {
+    console.log(params);
+    var index = -1;
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].id == params.target) {
+        index = i;
+        break;
+      }
+    }
+    if (elements[index].type === 'endNode') {
+      elements[index].data.body = <PlotGraph nodeId={params.source}/> ;
+      console.log(elements[index]);
+      setElements(addEdge(params, elements));
+    } else {
+      setElements((els) => addEdge(params, els));
+    }
+    
+  }
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
 
@@ -41,6 +60,12 @@ const Editor = () => {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
   };
+
+
+  useEffect(() => {
+    console.log("elements have change", elements);
+    localStorage.setItem("nodes", JSON.stringify(elements));
+  }, [elements])
 
   const onDrop = (event) => {
     event.preventDefault();
@@ -58,17 +83,18 @@ const Editor = () => {
     //   data: { label: `${type} node` },
     // };
     let newNode = null
-    if (type === 'startNode') {
+    const id = getId();
+    if (type === 'fileUploadNode') {
       newNode = {
-        id: getId(),
-        type,
+        id,
+        type: 'startNode',
         position,
         data: { label: 'File',
-                body: <p>Add your file here.</p> },
+                body: <FileUpload nodeId={id}/> },
       };
     } else if (type === 'middleNode') {
       newNode = {
-        id: getId(),
+        id,
         type,
         position,
         data: { label: 'Linear Regression Node',
@@ -76,11 +102,11 @@ const Editor = () => {
       };
     } else {
       newNode = {
-        id: getId(),
+        id,
         type,
         position,
         data: { label: 'Scatter Plot Node',
-                body: <PlotGraph /> },
+                body: <PlotGraph nodeId=""/> },
       };
     }
 
@@ -96,7 +122,6 @@ const Editor = () => {
   return (
     <div className="dndflow">
       <ReactFlowProvider>
-        <AddNodeSidebar />
         <div className="reactflow-wrapper" ref={reactFlowWrapper}>
           <ReactFlow
             elements={elements}
@@ -106,8 +131,9 @@ const Editor = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             nodeTypes={nodeTypes}
+            defaultZoom={0.5}
           >
-            <Controls />
+            <Controls/>
           </ReactFlow>
         </div>
       </ReactFlowProvider>

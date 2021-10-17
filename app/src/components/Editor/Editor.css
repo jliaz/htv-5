@@ -1,0 +1,6 @@
+.react-flow__controls {
+    bottom: 10px;
+    left: 95%;
+    position: absolute;
+    z-index: 5;
+}

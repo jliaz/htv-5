@@ -1,22 +1,51 @@
+* {
+  font-family: "Work Sans";
+}
+
+.flowboat-node {
+  width: 100px;
+}
 .start-node {
-  background-color: green;
+  background-color: #6FEF8D;
   border-radius: 0px 15px 15px 0px;
 }
 
 .middle-node {
-  background-color: orange;
+  background-color: #F2855E;
   border-radius: 15px
 }
 
 .end-node {
-  background-color: red;
-  border-radius: 15px 0 0 15px
+  background-color: #FFA6A3;
+  border-radius: 15px 0 0 15px;
+
 }
 
 .pocket-node-text {
   font-size: 1rem;
-  /* justify-content: center; */
-  line-height: 100px;
-  color: black;
-  font-weight: 400;
+  color: white;
+  font-weight: 400; 
+  top: 50%;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #627f9a; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #627f9a; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4f7496; 
 }
