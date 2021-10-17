@@ -88,21 +88,21 @@
   margin-left: 8%;
   font-weight: bold;
   font-size: 50px;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .home-page-jumbotron h2 {
   color: rgba(255, 255, 255, 0.712);
   /* width: 40%; */
   margin-left: 8%;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .home-page-jumbotron img {
   /* color: rgba(255, 255, 255, 0.712); */
   width: 90%;
   margin-left: 5%;
-  display: inline-block;
+  /* display: inline-block; */
   /* margin-left: 8%; */
   border-radius: 15px;
 }
@@ -121,7 +121,6 @@
   color: rgba(255, 255, 255, 0.979);
   font-weight: bold;
   font-size: 50px;
-  font-weight: bold;
 }
 
 .home-page-section1 h2 {
