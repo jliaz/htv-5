@@ -97,11 +97,11 @@ export default class ScatterPlot extends React.Component {
             transform={`translate(${this.props.margin.left}, ${this.props.margin.top})`}></g>
 
           {/* Axis labels */}
-          <text className="axis-label" transform={`translate(${this.props.margin.left + this.drawWidth / 2}, 
-            ${this.props.height - this.props.margin.bottom + 30})`}>{this.props.xTitle}</text>
+          <text className="axis-label" transform={`translate(${this.props.margin.left - this.props.xTitle.length*4 + this.drawWidth / 2}, 
+            ${this.props.height - this.props.margin.bottom + 40})`}>{this.props.xTitle}</text>
 
           <text className="axis-label" transform={`translate(${this.props.margin.left - 30}, 
-            ${this.drawHeight / 2 + this.props.margin.top}) rotate(-90)`}>{this.props.yTitle}</text>
+            ${this.drawHeight / 2 + this.props.margin.top + this.props.yTitle.length*4}) rotate(-90)`}>{this.props.yTitle}</text>
         </svg>
       </div>
 

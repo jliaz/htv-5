@@ -2,7 +2,8 @@ import React from "react";
 import ScatterPlot from "./ScatterPlot";
 import * as d3 from "d3";
 import data from '../../data/sample.csv';
-import { Box } from "@mui/system";
+import { Box, spacing } from "@mui/system";
+import { Divider } from "@mui/material";
 
 export default class PlotGraph extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ export default class PlotGraph extends React.Component {
               </select>
             </div>                        
           </div>
-
+          <p></p>
           <ScatterPlot
             xTitle={this.state.xVar}
             yTitle={this.state.yVar}
