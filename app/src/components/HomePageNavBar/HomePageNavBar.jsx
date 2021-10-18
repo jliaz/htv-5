@@ -5,9 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import dropIcon from './dropIcon.svg';
+import dropIcon from '../NavBar/dropIcon.svg';
 import flowboatLogo from './flowboatLogo.svg'
-import AddNodeSidebar from '../AddNodeSidebar/AddNodeSidebar';
 import Modal from '@mui/material/Modal';
 
 const style = {
@@ -48,23 +47,22 @@ const helpStyle = {
   paddingTop: 0
 }
 
-function NavBar(props) {
+function HomePageNavBar(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpenHelp = () => setOpen(true);
   const handleCloseHelp = () => setOpen(false);
 
   return (
-      <Box sx={{ flexGrow: 1, display: 'flex', borderBottom: '2px solid #627F9A', margin:'0px', height:'2 0px', width:'100%', alignItems:'center', position:'absolute', zIndex:'9999'}}>
+      <Box sx={{ flexGrow: 1, display: 'flex', margin:'0px', height:'2 0px', width:'100%', alignItems:'center', position:'absolute', zIndex:'9999'}}>
         <AppBar position="static" elevation={0} sx={{fontFamily: 'Work-sans', backgroundColor:'#194769'}}>
           <Toolbar  >
-            <IconButton sx={{marginBottom:'3px', paddingTop:"0px"}} href="/">
+            <IconButton sx={{marginBottom:'3px'}}>
               <img src={dropIcon} alt="drop icon"/>
             </IconButton>
-            <AddNodeSidebar/>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign:'center'}}>
-              {props.title}
+              <img src={flowboatLogo} alt='flowboat logo' style={imgStyle}/>
             </Typography>
-            <Button color="inherit" sx={{ textTransform: 'none' }}>Share</Button>
+            <Button color="inherit" sx={{ textTransform: 'none' }} href="/editor">Demo Editor</Button>
             <Button onClick={handleOpenHelp} color="inherit" sx={{ textTransform: 'none' }}>Help</Button>
             <Modal 
               open={open}
@@ -93,4 +91,4 @@ function NavBar(props) {
   );
 }
 
-export default NavBar
+export default HomePageNavBar
